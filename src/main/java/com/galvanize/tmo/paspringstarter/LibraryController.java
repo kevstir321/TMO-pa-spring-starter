@@ -6,10 +6,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -28,7 +25,8 @@ public class LibraryController {
     public ResponseEntity <Map<String,List<Book>>> getBooks() {
 
         books = books.stream()
-                .sorted((object1, object2) -> object1.getTitle().compareTo(object2.getTitle())).collect(Collectors.toList());
+                .sorted(Comparator.comparing(Book::getTitle)).collect(Collectors.toList());
+        bookMap.put("books",books);
         return new ResponseEntity<Map<String,List<Book>>>(bookMap, HttpStatus.OK);
     }
 
