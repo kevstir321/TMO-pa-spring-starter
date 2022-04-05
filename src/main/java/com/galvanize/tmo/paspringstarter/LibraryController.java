@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 public class LibraryController {
@@ -25,6 +26,9 @@ public class LibraryController {
 
     @GetMapping(path = "/api/books", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity <Map<String,List<Book>>> getBooks() {
+
+        books = books.stream()
+                .sorted((object1, object2) -> object1.getTitle().compareTo(object2.getTitle())).collect(Collectors.toList());
         return new ResponseEntity<Map<String,List<Book>>>(bookMap, HttpStatus.OK);
     }
 
