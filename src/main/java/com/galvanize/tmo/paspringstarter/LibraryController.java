@@ -31,12 +31,12 @@ public class LibraryController {
 //        return "foobar";
 //    }
 
-    @GetMapping(path = "GET/api/books", produces = {MediaType.APPLICATION_JSON_VALUE})
+    @GetMapping(path = "/api/books", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity <Map<String,List<Book>>> getBooks() {
         return new ResponseEntity<Map<String,List<Book>>>(bookMap, HttpStatus.OK);
     }
 
-    @PostMapping(path = "POST/api/books", consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @PostMapping(path = "/api/books", consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<Book> createBook(@RequestBody Book requestUserDetails) {
         bookCount++;
         Book returnValue = new Book(bookCount,requestUserDetails.getAuthor(),requestUserDetails.getBookName(),requestUserDetails.getYearPublished());
@@ -45,7 +45,7 @@ public class LibraryController {
         return new ResponseEntity<>(returnValue, HttpStatus.CREATED);
     }
 
-    @GetMapping(path = "DELETE/api/books")
+    @GetMapping(path = "/api/books")
     public ResponseEntity removeBooks() {
         books.clear();
         bookMap.put("books",books);
