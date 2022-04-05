@@ -39,6 +39,7 @@ public class LibraryController {
 
     @DeleteMapping(path = "/api/books")
     public ResponseEntity removeBooks() {
+        bookCount = 0;
         books.clear();
         bookMap.put("books",books);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
