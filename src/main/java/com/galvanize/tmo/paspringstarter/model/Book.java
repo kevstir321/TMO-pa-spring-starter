@@ -6,14 +6,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class Book {
 
     private String author;
-    private String bookName;
+    private String title;
     private int yearPublished;
     private int id;
 
-    public Book(int id,String author, String bookName, int yearPublished) {
+    public Book(int id,String author, String title, int yearPublished) {
         this.id = id;
         this.author = author;
-        this.bookName = bookName;
+        this.title = title;
         this.yearPublished = yearPublished;
     }
 
@@ -21,26 +21,12 @@ public class Book {
         return author;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public String getTitle() {
+        return title;
     }
-
-
-    public String getBookName() {
-        return bookName;
-    }
-
-    public void setBookName(String bookName) {
-        this.bookName = bookName;
-    }
-
 
     public int getYearPublished() {
         return yearPublished;
-    }
-
-    public void setYearPublished(String description) {
-        this.yearPublished = yearPublished;
     }
 
     public int getId() {
