@@ -1,17 +1,20 @@
 package com.galvanize.tmo.paspringstarter.model;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonPropertyOrder({ "id", "author", "title", "yearPublished" })
 public class Book {
 
     private String author;
-    private String bookName;
+    private String title;
     private int yearPublished;
-    private int bookId;
+    private int id;
 
-    public Book(String author, String bookName, int yearPublished, int bookId) {
+    public Book(int id,String author, String bookName, int yearPublished) {
+        this.id = id;
         this.author = author;
-        this.bookName = bookName;
+        this.title = bookName;
         this.yearPublished = yearPublished;
-        this.bookId = bookId;
     }
 
     public String getAuthor() {
@@ -24,11 +27,11 @@ public class Book {
 
 
     public String getBookName() {
-        return bookName;
+        return title;
     }
 
     public void setBookName(String bookName) {
-        this.bookName = bookName;
+        this.title = bookName;
     }
 
 
@@ -40,7 +43,7 @@ public class Book {
         this.yearPublished = yearPublished;
     }
 
-    public int getBookId() {
-        return bookId;
+    public int getId() {
+        return id;
     }
 }
