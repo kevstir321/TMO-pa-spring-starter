@@ -20,13 +20,13 @@ import java.util.Map;
 public class LibraryController {
 
     Map<String, List<Book>> bookMap = new HashMap<>();
-    List<Book> books = new ArrayList<Book>();
+    List<Book> books = new ArrayList<>();
     private int bookCount = 0;
 
-    @GetMapping("/health")
-    public String health() {
-        return "foobar";
-    }
+//    @GetMapping("/health")
+//    public String health() {
+//        return "foobar";
+//    }
 
     @GetMapping(path = "GET/api/books", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity <Map<String,List<Book>>> getBooks() {
@@ -38,7 +38,7 @@ public class LibraryController {
         Book returnValue = new Book(requestUserDetails.getAuthor(),requestUserDetails.getBookName(),requestUserDetails.getYearPublished(), ++bookCount);
         books.add(returnValue);
         bookMap.put("books",books);
-        return new ResponseEntity<Book>(returnValue, HttpStatus.OK);
+        return new ResponseEntity<Book>(returnValue, HttpStatus.CREATED);
     }
 
     @GetMapping(path = "DELETE/api/books")
